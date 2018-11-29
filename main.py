@@ -21,7 +21,7 @@ if __name__ == "__main__":
         dct_result = dct_function(resize_result)
         quantize_result = quantize_function(dct_result)
         vectorize_coeff_result = zig_zag(quantize_result)
-        print (dictionary)
+        print (vectorize_coeff_result)
 
     except:
         pass
