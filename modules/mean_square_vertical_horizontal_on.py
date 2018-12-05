@@ -1,10 +1,16 @@
 # mean product between the square of horizontal and vertical distances between all "on" pixels;
-from modules.mean_vertical_horizontal_on import sum_horizontal_distance
-from modules.mean_vertical_horizontal_on import sum_vertical_distance
+from mean_vertical_horizontal_on import sum_horizontal_distance
+from mean_vertical_horizontal_on import sum_vertical_distance
 
 
 def mean_square_vertical_horizontal_on(image):
-    height,width=image.shape
-    vertical=sum_vertical_distance(image,heigth,width)
-    horizontal=sum_horizontal_distance(image,heigth,width)
+    vertical=sum_vertical_distance(image)
+    horizontal=sum_horizontal_distance(image)
     return (vertical*vertical*horizontal*horizontal)/2
+
+
+mage=[[   0, 255, 255, 255, 255, 255, 255],
+       [255, 255,   0,   0,   0,   0, 255],
+       [255, 255,   0,   0,   0,   0, 255],
+       [255,   0,   0, 255, 255, 255, 255]]
+print(mean_square_vertical_horizontal_on(mage))
