@@ -3,10 +3,10 @@ def mean_margins_bottom_top ( image) :
     number_margins = 0
     total_number = 0
 
-    for j in range(0,len(image)) :
+    for j in range(0,len(image[0])) :
         flag = True
         ok = True
-        i = len(image)
+        i = len(image) - 1
 
         while( i >= 0) :
             if image[i][j] == 255 :
