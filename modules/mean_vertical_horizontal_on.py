@@ -38,6 +38,12 @@ def sum_vertical_distance(image):
                         break
     return sum
 
+
+def mean_square_vertical_horizontal_on(image):
+    vertical=sum_vertical_distance(image)
+    horizontal=sum_horizontal_distance(image)
+    return (vertical*vertical*horizontal*horizontal)/2
+
 def mean_vertical_horizontal_on(image):
     return (sum_vertical_distance(image)*sum_horizontal_distance(image))/2
 
