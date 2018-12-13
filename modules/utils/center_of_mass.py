@@ -1,15 +1,16 @@
 from PIL import Image
 from numpy.core.multiarray import ndarray
 
-import rgb_to_bw as bw_transformation
-import marks_the_center_of_mass as marks_the_center
+from modules.utils.rgb_to_bw import rgb_to_bw
+from modules.utils.marks_the_center_of_mass import marks_the_center_of_mass
+
 import numpy as np
 import cv2
 from scipy import ndimage
 
 def center_of_mass_coord(image:str):
     #transformarea imaginii in alb-negru
-    bw_image = bw_transformation.rgb_to_bw(image)
+    bw_image = rgb_to_bw(image)
     bw_image_for_show = cv2.imread(bw_image)
     bw_image_for_show = cv2.cvtColor(bw_image_for_show, cv2.COLOR_BGR2GRAY)
     #calculul centrului de masa inaltimea(cy) si latimea(cx)

@@ -1,15 +1,15 @@
-
-import rgb_to_bw as bw_transformation
 import cv2
 
+from modules.utils.rgb_to_bw import rgb_to_bw
 
-def count_on_pixels(image:str):
+
+def count_on_pixels(image: str):
     # transformarea imaginii in alb-negru
-    bw_image = bw_transformation.rgb_to_bw(image)
+    bw_image = rgb_to_bw(image)
     bw_image_for_show = cv2.imread(bw_image)
     bw_image_for_show = cv2.cvtColor(bw_image_for_show, cv2.COLOR_BGR2GRAY)
 
-    #numararea efectiva a punctelor negre
+    # numararea efectiva a punctelor negre
     count = 0
 
     for line in range(0, len(bw_image_for_show)):
@@ -19,5 +19,5 @@ def count_on_pixels(image:str):
 
     return count
 
-#Decomentati pentru a vedea cum ruleaza pe un exemplu
-#print(count_on_pixels('S_chirilic.jpg'))
+# Decomentati pentru a vedea cum ruleaza pe un exemplu
+# print(count_on_pixels('S_chirilic.jpg'))
