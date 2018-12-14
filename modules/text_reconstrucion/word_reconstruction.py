@@ -22,14 +22,22 @@ def textReconstruction(letterList,file,prag_cuvant,prag_rand):
 
         if x1-list_of_coords[l-1][1]>prag_cuvant:
             print("cuvant nou")
-            lineText.append(wordText)
+            aux=[]
+            aux=wordText.copy()
+            lineText.append(aux)
             wordText.clear()
             wordText.append(letterList[l])
 
 
         elif y1-list_of_coords[l-1][2]>prag_rand:
             print("rand nou")
-            finalText.append(lineText)
+            aux2=[]
+            aux2 = wordText.copy()
+            lineText.append(aux2)
+            wordText.clear()
+            aux3 = []
+            aux3 = lineText.copy()
+            finalText.append(aux3)
             lineText.clear()
             wordText.clear()
             wordText.append(letterList[l])
@@ -37,13 +45,21 @@ def textReconstruction(letterList,file,prag_cuvant,prag_rand):
 
         else :
             wordText.append(letterList[l])
+            if l == len(list_of_coords) - 1:
+                aux2 = []
+                aux2 = wordText.copy()
+                lineText.append(aux2)
+                wordText.clear()
+                aux3 = []
+                aux3 = lineText.copy()
+                finalText.append(aux3)
 
-    for i in range(0,len(finalText)):
-        print(finalText[i])
+    print(finalText)
 
 
 def main():
     prag_cuvant=1
     prag_rand=1
-    textReconstruction(['a','b','c','d','e'], "C:\\Users\\Andrada\\Desktop\\AI_Modul\\input.txt",prag_cuvant,prag_rand)
+    textReconstruction(['a', 'b', 'c', 'd', 'e'], "C:\\Users\\sfirn\\Desktop\\AI\\input.txt", prag_cuvant, prag_rand)
+
 main()
