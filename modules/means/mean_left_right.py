@@ -22,13 +22,13 @@ def mean_left_right(image):
                     # #bw.itemset((line, column, 2), 122)
                     right = right + 1
 
-                if line == len(image) or image[line + 1][column] == 255:
+                if line == len(image) - 1 or image[line + 1][column] == 255:
                     # bw.itemset((line,column, 0), 55)
                     # bw.itemset((line, column, 1), 42)
                     # bw.itemset((line, column, 2), 122)
                     up = up + 1
 
-                if column == len(image[line]) or image[line][column + 1] == 255:
+                if column == len(image[line]) - 1 or image[line][column + 1] == 255:
                     # bw.itemset((line,column, 0), 0)
                     # bw.itemset((line, column, 1), 41)
                     # bw.itemset((line, column, 2), 25)
