@@ -30,4 +30,8 @@ def mean_vertical_distance(image):
                        total_distances+=1
             i+=1
         j+=1
-    return sum_of_distances/total_distances
+    
+    if total_distances != 0:
+        return sum_of_distances/total_distances
+
+    return 0
