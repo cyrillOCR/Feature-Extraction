@@ -35,4 +35,14 @@ def mean_left_right(image):
                     down = down + 1
     s = up + down + left + right
     # cv2.imwrite("miruna.png", bw)
-    return (left / s, right / s, down / s, up / left)
+
+    if s == 0:
+        if left == 0:
+            return (0, 0, 0, 0)
+        else:
+            return (0, 0, 0, up / left)
+    else:
+        if left == 0:
+            return (left / s, right / s, down / s, 0)
+        else:
+            return (left / s, right / s, down / s, up / left)
