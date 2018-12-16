@@ -3,7 +3,7 @@ import sys
 from modules.dct.dct_result import dct_result_function
 from modules.utils.iterate_image import image_vector
 from modules.means.means_supervisor import means_supervisor_function
-from modules.utils.crop import crop
+from modules.utils.Resize import crop
 from modules.dct.dct_for_each_letter import dct_means_for_each_letter_function
 
 
