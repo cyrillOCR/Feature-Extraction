@@ -6,9 +6,8 @@ def zig_zag(quantize_result):
         final_k_list = []
 
         for i in range(8):
-            for j in range(8):
+            for j in range(7 - i):
                 sum = i + j
-
                 if sum % 2 == 0:
                     k_list[sum].insert(0, quantize_result[q_element][i][j])
                 else:
