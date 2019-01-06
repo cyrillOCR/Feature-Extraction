@@ -4,7 +4,7 @@ import time
 from flask import Flask, request, jsonify
 
 from modules.dct.dct_for_each_letter import dct_means_for_each_letter_function
-from modules.utils.Resize import crop
+from modules.utils.Resize_optimizat_1 import crop
 from modules.utils.iterate_image import image_vector
 from modules.utils.json import make_json
 from modules.utils.coordSerialization import coordSerialization
