@@ -3,8 +3,8 @@ import copy
 import cv2
 import numpy as np
 
-ox_max = 24
-oy_max = 24
+ox_max = 35
+oy_max = 35
 
 
 def crop(img, list_of_coords):
