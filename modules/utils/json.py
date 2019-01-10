@@ -19,8 +19,6 @@ def make_json(list):
             data[j]=letter
             j=j+1
     #make .json
-    with open('modules/utils/data.json', 'w') as outfile:
-        json.dump(data, outfile)
     return data
 
 #this is how you print json.loads data
