@@ -9,10 +9,9 @@ from modules.utils.base64 import decode
 
 app = Flask(__name__)
 
-@app.route('/',methods = ['POST'])
+@app.route('/feature',methods = ['POST'])
 def requests():
    
-    #coordsList = []
     received_json = request.json
     coords_from_json=received_json["coords"]
     base64_from_json=received_json["base64"]
@@ -22,4 +21,4 @@ def requests():
 
 
 if __name__ == "__main__":
-    app.run(port = 5005,debug=True)
+    app.run(host='0.0.0.0')
