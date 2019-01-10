@@ -16,11 +16,9 @@ def make_json(list):
     j=0
     #add all the tuples to data
     for letter in list:
-        data[j]=letter
-        j=j+1
+            data[j]=letter
+            j=j+1
     #make .json
-    with open('modules/utils/data.json', 'w') as outfile:
-        json.dump(data, outfile)
     return data
 
 #this is how you print json.loads data
@@ -38,10 +36,15 @@ def serialize_json():
     list_of_letters=[]
     for key in data.keys():
         letter=Letter(data[key])
-
         list_of_letters.append(letter)
-
     #the value can be accessed as you can see below
     #for i in list_of_letters:
     #    print(i.dct_means)
     return list_of_letters
+
+def coordSerialization(dict_coords):
+    coordList=[]
+    for i in dict_coords:
+        coordList.append(tuple(i))
+    return  coordList
+

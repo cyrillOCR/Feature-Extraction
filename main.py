@@ -1,41 +1,25 @@
 import sys
-import time
+
+from flask import Flask, request, jsonify
 
 from modules.dct.dct_for_each_letter import dct_means_for_each_letter_function
-from modules.utils.Resize import crop
-from modules.utils.iterate_image import image_vector
-from modules.utils.json import make_json
+from modules.utils.Resize_optimizat_1 import crop
+from modules.utils.json import make_json,coordSerialization
+from modules.utils.base64 import decode
+
+app = Flask(__name__)
+
+@app.route('/',methods = ['POST'])
+def requests():
+   
+    #coordsList = []
+    received_json = request.json
+    coords_from_json=received_json["coords"]
+    base64_from_json=received_json["base64"]
+    coordsList=coordSerialization(coords_from_json)
+    result = dct_means_for_each_letter_function(crop(decode(base64_from_json), coordsList))
+    return jsonify(make_json(result)), 200
+
 
 if __name__ == "__main__":
-    try:
-        t = time.time()
-        vectored_image = image_vector(sys.argv[1])
-        page = sys.argv[1]
-        file = sys.argv[2]
-        f = open("test.txt", "w")
-        result = dct_means_for_each_letter_function(crop(page, file))
-
-        for letter in result:
-            test_len = 0
-            # for i in letter:
-            # for j in i:
-            #     test_len += len(j)
-            # print(letter)
-            # print('\n')
-            # print(test_len)
-            # print('\n\n')
-            f.write(str(letter))
-            f.write('\n\n')
-            # f.write(str(test_len))
-
-        make_json(result)
-
-        # for letter in dct_means_for_each_letter_function(crop(page, file)):
-        #     print(letter)
-        #     print('\n\n')
-        #
-        print(time.time() - t)
-        print("Finished")
-
-    except Exception as e:
-        print(str(e))
+    app.run(port = 5005,debug=True)
