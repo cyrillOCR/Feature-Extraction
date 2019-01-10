@@ -2,7 +2,6 @@ from modules.means.mean_horizontal_distances import mean_vertical_distance
 from modules.means.mean_left_right import mean_left_right
 from modules.means.mean_margins_bottom_top import mean_margins_bottom_top
 from modules.means.mean_margins_left_right import mean_margins_left_right
-from modules.means.mean_of_the_horizontal_positions_relative_to_the_center import compute_mean_of_horizontal_positions
 from modules.means.mean_square_horizontal_vertical import mean_horizontal_vertical
 from modules.means.mean_vertical_distances import mean_vertical_distance
 from modules.means.mean_vertical_horizontal_on import mean_square_vertical_horizontal_on
