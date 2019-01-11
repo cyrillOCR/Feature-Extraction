@@ -16,15 +16,20 @@ def requests():
     coords_from_json=received_json["coords"]
     base64_from_json=received_json["base64"]
     coordslist=coordSerialization(coords_from_json)
+    
+    if len(coordslist) > 0:
 
-
-    result = dct_means_for_each_letter_function(crop(decode(base64_from_json), coordslist))
-    predictedResult = predict(make_json(result))
-    return jsonify(predictedResult), 200 , {
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Headers': 'Content-Type',
-        }
-   
+        result = dct_means_for_each_letter_function(crop(decode(base64_from_json), coordslist))
+        predictedResult = predict(make_json(result))
+        return jsonify(predictedResult), 200 , {
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Headers': 'Content-Type',
+            }
+    else:
+        return jsonify({"Bad_Image":""}), 200 , {
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Headers': 'Content-Type',
+            }
 
 
 if __name__ == "__main__":
