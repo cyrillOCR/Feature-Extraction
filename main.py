@@ -1,7 +1,5 @@
 import sys
-
 from flask import Flask, request, jsonify
-
 from modules.dct.dct_for_each_letter import dct_means_for_each_letter_function
 from modules.utils.Resize_optimizat_1 import crop
 from modules.utils.json import make_json,coordSerialization
