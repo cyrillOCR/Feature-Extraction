@@ -16,6 +16,9 @@ def hello():
 
 @app.route('/feature',methods=['POST','OPTIONS'])
 def requests():
+    if request.method == 'OPTIONS':
+        return ''
+        
     received_json = request.json
     coords_from_json=received_json["coords"]
     base64_from_json=received_json["base64"]
