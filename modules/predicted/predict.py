@@ -1,7 +1,8 @@
-import json
 import collections
 import numpy as np
 import keras
+import os
+from keras import backend as K
 
 
 def flatten(x):
@@ -12,7 +13,8 @@ def flatten(x):
 
 
 def create_label_mapping():
-    f = open("modules/predicted/labelsset.txt", "r", encoding="utf-8")
+   
+    f = open("lab.txt", "r", encoding="utf-8")
     labels_set = []
     for line in f:
         line = line.replace("\n", "")
@@ -34,7 +36,8 @@ def predict(feature_dictionary):
     features = np.array(features)
     features = features / 128
     x_test = features
-    model = keras.models.load_model("modules/predicted/saved_model.h5")
+    model = keras.models.load_model("saved_model.h5")
     predictions = model.predict_classes(x_test)
+    K.clear_session()
     predictions = [labels_mapping[index] for index in predictions]
     return predictions
