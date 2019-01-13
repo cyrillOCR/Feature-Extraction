@@ -9,6 +9,11 @@ from modules.predicted.predict import predict
 
 app = Flask(__name__)
 CORS(app)
+
+@app.route('/')
+def hello():
+    return "IT WORKS HERE AS WELL!"
+
 @app.route('/feature',methods=['POST','OPTIONS'])
 def requests():
     received_json = request.json
