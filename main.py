@@ -6,7 +6,6 @@ from modules.utils.Resize_optimizat_1 import crop
 from modules.utils.json import make_json,coordSerialization
 from modules.utils.base64 import decode
 from modules.predicted.predict import predict
-import json
 
 app = Flask(__name__)
 CORS(app)
@@ -33,4 +32,4 @@ def requests():
 
 
 if __name__ == "__main__":
-    app.run(port=5005)
+     app.run(host='0.0.0.0', port=5050, debug=True)

@@ -18,4 +18,7 @@ def mean_margins_bottom_top ( image) :
                 ok = False
                 total_number +=1
             i = i - 1
-    return number_margins/total_number
+    if total_number!=0:
+        return number_margins/total_number
+    else:
+        return 0
