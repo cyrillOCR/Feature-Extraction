@@ -14,7 +14,7 @@ def flatten(x):
 
 def create_label_mapping():
    
-    f = open("lab.txt", "r", encoding="utf-8")
+    f = open(os.path.join(os.path.dirname(os.path.abspath(__file__)),'lab.txt'), "r", encoding="utf-8")
     labels_set = []
     for line in f:
         line = line.replace("\n", "")
@@ -36,7 +36,7 @@ def predict(feature_dictionary):
     features = np.array(features)
     features = features / 128
     x_test = features
-    model = keras.models.load_model("saved_model.h5")
+    model = keras.models.load_model(os.path.join(os.path.dirname(os.path.abspath(__file__)),'saved_model.h5'))
     predictions = model.predict_classes(x_test)
     K.clear_session()
     predictions = [labels_mapping[index] for index in predictions]
