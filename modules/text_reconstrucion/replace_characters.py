@@ -1,15 +1,25 @@
-def replace_character(finalText):
-    file=open("replace.txt")
-    #file.strip()
-    replaced_text=finalText
+import os
+def get_dictionary():
+    file=open(os.path.join(os.path.dirname(os.path.abspath(__file__)),'replace.txt'))
+    
+
+    dictionary_for_pattern = {}
+
     for line in file:
         line=line.strip()
         car_de_inlocuit, car_corect = line.split("-")
-        print(car_de_inlocuit,car_corect)
-        replaced_text=replaced_text.replace(car_de_inlocuit,car_corect)
-        replaced_text = replaced_text.replace("\u02191\u02192","\u0219")
-        replaced_text = replaced_text.replace("\u0219t1\u0219t2","\u0219t")
-        replaced_text = replaced_text.replace("\u021B1\u021B2","\u021B")
+        dictionary_for_pattern[car_de_inlocuit] = car_corect
+    
+    return dictionary_for_pattern
 
-    return replaced_text
+
+def replace_character(list_of_words,dictionary_of_patterns):
+    formatted_words = []
+    for word in list_of_words:
+        word_copy = [word[0],word[1]]
+        for key in dictionary_of_patterns:
+            word_copy[1] = word_copy[1].replace(key,dictionary_of_patterns[key]) 
+        formatted_words.append(word_copy)
+
+    return formatted_words
 

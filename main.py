@@ -6,8 +6,8 @@ from modules.utils.Resize_optimizat_1 import crop
 from modules.utils.json import make_json,coordSerialization
 from modules.utils.base64 import decode
 from modules.predicted.predict import predict
-from modules.text_reconstrucion.word_reconstruction import textReconstruction
-from modules.text_reconstrucion.replace_characters import replace_character
+from modules.text_reconstrucion.word_reconstruction import text_reconstruction
+from modules.text_reconstrucion.replace_characters import replace_character,get_dictionary
 
 app = Flask(__name__)
 CORS(app)
@@ -16,23 +16,26 @@ CORS(app)
 def hello():
     return "IT WORKS HERE AS WELL!"
 
+dictionary_of_patterns = {}
+
 @app.route('/feature',methods=['POST','OPTIONS'])
 def requests():
+
+
     if request.method == 'OPTIONS':
-        return ''
-        
+        return ''    
     received_json = request.json
     coords_from_json=received_json["coords"]
     base64_from_json=received_json["base64"]
     coordslist=coordSerialization(coords_from_json)
     
     if len(coordslist) > 0:
-
+        global dictionary_of_patterns
         result = dct_means_for_each_letter_function(crop(decode(base64_from_json), coordslist))
         predictedResult = predict(make_json(result))
-        reconstructed_text = textReconstruction(predictedResult,coordslist)
+        reconstructed_text = text_reconstruction(coordslist,predictedResult)
 
-        return jsonify(  reconstructed_text), 200 , {
+        return jsonify(replace_character(reconstructed_text,dictionary_of_patterns)), 200 , {
             'Access-Control-Allow-Origin': '*',
             'Access-Control-Allow-Headers': 'Content-Type',
             }
@@ -44,4 +47,5 @@ def requests():
 
 
 if __name__ == "__main__":
-     app.run(host='0.0.0.0', port=5050, debug=True)
+    dictionary_of_patterns = get_dictionary()
+    app.run(host='0.0.0.0', port=5050, debug=True)
