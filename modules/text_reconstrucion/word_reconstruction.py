@@ -9,6 +9,7 @@ def textReconstruction(letterList,coordsList):
     prag_cuvant = 90
     prag_rand=70
     nr=0
+
     for l in range(1, len(coordsList)):
 
         #y1, x1, y2, x2 = coordsList[l][0], coordsList[l][1], coordsList[l][2], coordsList[l][3]
@@ -66,6 +67,7 @@ def text_reconstruction(coords,letters):
     for line in text:
         mean = 0
         summ = 0
+
         for index  in range (0,len(line)-1):
             space = abs(line[index][0][2] - line[index+1][0][0])
             summ+=space

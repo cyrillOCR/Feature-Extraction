@@ -1,3 +1,7 @@
+# dupa aplicarea algoritmului dct si a cuantificatorului jpeg, pentru a obtine la inceputul listei rezultate valorile
+# cele mai semnificative, vom parcurge matricea rezultata in zig-zag, astfel valorile cele mai nesemnificative
+# (cele in jur de 0) vor fi la finalul listei
+
 def zig_zag(quantize_result):
     zig_zag_list = []
 
@@ -5,6 +9,9 @@ def zig_zag(quantize_result):
         k_list = [[] for i in range(15)]
         final_k_list = []
 
+        # deoarece valorile de deasupra diagonalei secundare sunt cele mai semnificative,
+        # pentru a optimiza intreg procesul, vom lua in considerare doar aceste valori
+        # valorile ce se apropie de 0 nu vor mai fi luate in considerare
         for i in range(8):
             for j in range(7 - i):
                 sum = i + j

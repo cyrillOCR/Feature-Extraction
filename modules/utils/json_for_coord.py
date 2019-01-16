@@ -1,6 +1,7 @@
 import json
 
-
+# cordonatele vor fi in formatul: x1 y1 x2 y2
+# vom parsa acest json si vom obtine coordonatele fiecarei litere
 def json_for_coord():
     file=open("coordonate10.txt")
     data={}

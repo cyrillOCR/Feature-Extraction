@@ -6,6 +6,8 @@ from modules.means.mean_square_horizontal_vertical import mean_horizontal_vertic
 from modules.means.mean_vertical_distances import mean_vertical_distance
 from modules.means.mean_vertical_horizontal_on import mean_square_vertical_horizontal_on
 
+
+# aplicam anumite medii pentru fiecare litera
 def means_supervisor_function(matrix_of_letter):
     means_result = list()
 
@@ -18,4 +20,5 @@ def means_supervisor_function(matrix_of_letter):
     ##means_result.append(mean_vertical_distance(matrix_of_letter))
     #means_result.append(mean_square_vertical_horizontal_on(matrix_of_letter))
 
+    # returnam o tupla cu toate aceste valori
     return tuple(means_result)
