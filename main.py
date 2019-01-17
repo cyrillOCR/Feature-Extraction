@@ -50,7 +50,7 @@ def requests():
             'Access-Control-Allow-Headers': 'Content-Type',
         }
     else:
-        return jsonify({"Bad_Image": ""}), 200, {
+        return jsonify([]), 200, {
             'Access-Control-Allow-Origin': '*',
             'Access-Control-Allow-Headers': 'Content-Type',
         }

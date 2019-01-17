@@ -25,7 +25,7 @@ def text_reconstruction(coords, letters):
     text.append(list(line))
 
     words_list = []
-
+    flag = False
     for line in text:
         mean = 0
         summ = 0
@@ -37,24 +37,30 @@ def text_reconstruction(coords, letters):
 
         mean = summ / len(line) - 1
         word = [list(line[0][0]), line[0][1]]
+        if flag:
+            word = [words_list[-1][0],words_list[-1][1][:-1] + word[1] ]
+            words_list = words_list[:-1]
+
 
         #Revenim pe aceeasi linie si separam literele in functie de media gasita
         for index in range(1, len(line)):
             space = abs(line[index - 1][0][2] - line[index][0][0])
 
-            if space < mean * 2:
+            if space < mean * 1.60:
                 word[1] = word[1] + line[index][1]
-                if line[index][0][1] < word[0][1]:
+                if line[index][0][1]< word[0][1] and not flag:
                     word[0][1] = line[index][0][1]
-                if line[index][0][3] > word[0][3]:
+                if line[index][0][3]> word[0][3] and not flag:
                     word[0][3] = line[index][0][3]
-                word[0][2] = line[index][0][2]
+                if not flag:
+                    word[0][2] = line[index][0][2]
             else:
-
+                flag = False
                 words_list.append(tuple(word))
-                word = [list(line[index][0]), line[index][1]]
-
-        words_list.append(tuple(word))
+                word = [list(line[index][0]),line[index][1]]
+        words_list.append(tuple(word))  
+        if line[-1][1] =='-':
+            flag =True
 
     return words_list
 
