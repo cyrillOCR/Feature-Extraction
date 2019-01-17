@@ -9,6 +9,7 @@ from modules.predicted.predict import predict
 from modules.text_reconstrucion.word_reconstruction import text_reconstruction
 from modules.text_reconstrucion.replace_characters import replace_character, get_dictionary
 
+
 app = Flask(__name__)
 CORS(app)
 
