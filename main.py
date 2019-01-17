@@ -25,12 +25,11 @@ dictionary_of_patterns = {}
 def requests():
     if request.method == 'OPTIONS':
         return ''
-
     # facem request modulului de front-end
     received_json = request.json
     # primim coordonatele literelor
     coords_from_json = received_json["coords"]
-    # primim imaginile literelor corespunzatoare
+    # primim imaginea preprocesata
     base64_from_json = received_json["base64"]
     # facem serializarea coordonatelor din json
     coordslist = coordSerialization(coords_from_json)
