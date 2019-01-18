@@ -16,7 +16,7 @@ CORS(app)
 
 @app.route('/')
 def hello():
-    return "IT WORKS HERE AS WELL!"
+    return "IT WORKS HERE AS WELL WITH LOCALTUNNEL!!"
 
 
 dictionary_of_patterns = {}
