@@ -58,4 +58,4 @@ def requests():
 
 if __name__ == "__main__":
     dictionary_of_patterns = get_dictionary()
-    app.run(host='0.0.0.0', port=5050, debug=True, ssl_context=('cert.pem', 'key.pem'))
+    app.run(host='0.0.0.0', port=5050, debug=True)
